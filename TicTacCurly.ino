@@ -1,6 +1,6 @@
 // fixed the bug granting the computer player an extra turn
 // added press b in gameplay to reset game (if playing againced computer 
-// that was for testing purposes but i liked it so i kelpt it
+// that was for testing purposes but i liked it so i kept it
 // cleaned up a few things here or there
 #include "Arduboy2.h"
 Arduboy2 ab;
@@ -50,15 +50,16 @@ void loop() {
        ab.setCursor((0), (55)); 
       ab.print("VERSION 1.1 Bug Fixes");
       if (ab.pressed(A_BUTTON)) {
+        ab.clear();
         gamestate += 1;
       }
     } 
   if (gamestate == 1) { 
-      ab.setCursor((49), (0)); 
-      ab.print("players");
-ab.setCursor((0), (10)); 
-      ab.print("LEFT or Right select");
-      ab.setCursor((20), (25)); 
+      ab.setCursor((23), (0)); 
+      ab.print("How Many Players?");
+ab.setCursor((5), (10)); 
+      ab.print("LEFT or RIGHT select");
+      ab.setCursor((35), (25)); 
       ab.print("B to PLAY");
           if(ab.pressed(RIGHT_BUTTON) && (players == 0)) { 
               players += 1;
@@ -67,21 +68,23 @@ ab.setCursor((0), (10));
             players -= 1;
     } 
           if(ab.pressed(B_BUTTON)) { 
+           
            gamestate = 2;
           } 
           if (players == 0) { 
-            ab.setCursor((49), (49)); 
-            ab.print("1");
+            ab.setCursor((29), (49)); 
+            ab.print("1 Player");
       } 
           else if (players == 1) { 
-            ab.setCursor((49), (49)); 
-            ab.print("2");
+            ab.setCursor((29), (49)); 
+            ab.print("2 Players");
       } 
           else if (players >= 2) { 
           players = 0;
       } 
   } 
    if (gamestate == 2) {
+            ab.clear();
            if(ab.pressed(B_BUTTON) && (players == 0)) { 
             turn = 0;
             emove = 0;
