@@ -1,4 +1,5 @@
-# TicTacCurly
+# TicTacCurly 
+ VERSION 1.1
 tic tac toe game for arduboy 1-2 player
 
 from title screen press a for player select
@@ -17,3 +18,7 @@ X WIN and O WIN are counted as are TIES
 if x wins o goes first in the next round, and if o wins x goes first next.
 
 its a simple game, the ai is as minimal as possible but enjoy
+
+UPDATE fixed a few bugs enemy now no longer takes 2 or more turns in single player mode
+       also added press b to reset board in single player only
+       made a few thingd run a bit more smoothly, added the proper title screen
