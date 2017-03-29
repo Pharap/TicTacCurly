@@ -39,41 +39,41 @@ void loop() {
     return;
     ab.clear();
     
-if (gamestate >= 3) {
+  if (gamestate >= 3) {
   gamestate = 1;
-}
-    if (gamestate == 0) {
+  }
+  if (gamestate == 0) {
        ab.drawBitmap((0), (0), titles, 128, 64, WHITE);
       if (ab.pressed(A_BUTTON)) {
         gamestate += 1;
       }
     }
-    if (gamestate == 1) {
+  if (gamestate == 1) {
       ab.setCursor((49), (0)); 
       ab.print("players");
 
-      if(ab.pressed(RIGHT_BUTTON) && (players == 0)) {
-      players += 1;
+          if(ab.pressed(RIGHT_BUTTON) && (players == 0)) {
+              players += 1;
     }
-     if(ab.pressed(LEFT_BUTTON) && (players == 1)) {
-      players -= 1;
+          if(ab.pressed(LEFT_BUTTON) && (players == 1)) {
+            players -= 1;
     }
-     if(ab.pressed(A_BUTTON)) {
-      gamestate += 1;
+          if(ab.pressed(A_BUTTON)) {
+            gamestate += 1;
     }
-      if (players == 0) {
-  ab.setCursor((49), (49)); 
-  ab.print("1");
+          if (players == 0) {
+            ab.setCursor((49), (49)); 
+            ab.print("1");
       }
-      else if (players == 1) {
-        ab.setCursor((49), (49)); 
-  ab.print("2");
+          else if (players == 1) {
+            ab.setCursor((49), (49)); 
+            ab.print("2");
       }
-      else if (players >= 2) {
-        players = 0;
+          else if (players >= 2) {
+          players = 0;
       }
       
-     if (gamestate == 2) {
+   if (gamestate == 2) {
 
       //make enemy move and stuff
       if ((players == 0) && (turn == 1)) {
@@ -83,43 +83,43 @@ if (gamestate >= 3) {
          a1 = 2;
          turn += 1; 
       }
-            else if ((emove == 2) && (a2 == 0)); {
+        else if ((emove == 2) && (a2 == 0)); {
          a2 = 2; 
          turn += 1;
       }
-            else if ((emove == 3) && (a3 == 0)); {
+        else if ((emove == 3) && (a3 == 0)); {
          a3 = 2;
          turn += 1; 
       }
-            else if ((emove == 4) && (b1 == 0)); {
+        else if ((emove == 4) && (b1 == 0)); {
          b1 = 2;
          turn += 1; 
       }
-            else if ((emove == 5) && (b2 == 0)); {
+        else if ((emove == 5) && (b2 == 0)); {
          b2 = 2; 
          turn += 1;
       }
-            else if ((emove == 6) && (b3 == 0)); {
+        else if ((emove == 6) && (b3 == 0)); {
          b3 = 2; 
          turn += 1;
       }
-            else if ((emove == 7) && (c1 == 0)); {
+        else if ((emove == 7) && (c1 == 0)); {
          c1 = 2; 
          turn += 1;
       }
-            else if ((emove == 8) && (c2 == 0)); {
+         else if ((emove == 8) && (c2 == 0)); {
          c2 = 2; 
          turn += 1;
       }
-            else if ((emove == 9) && (c3 == 0)); {
+         else if ((emove == 9) && (c3 == 0)); {
          b2 = 2; 
          turn += 1;
       }
-            else {
+         else {
         emove = rand() % 8 + 1;
       
     }
-    }
+    } //  pull one of thease out?
  // test stuff get rid of eventualy
  ab.setCursor((70), (0)); 
   ab.print("X WINS");
