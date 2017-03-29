@@ -47,32 +47,32 @@ void loop() {
       if (ab.pressed(A_BUTTON)) {
         gamestate += 1;
       }
-    }
-  if (gamestate == 1) {
+    } // checked only void loop left open
+  if (gamestate == 1) { //open one
       ab.setCursor((49), (0)); 
       ab.print("players");
 
-          if(ab.pressed(RIGHT_BUTTON) && (players == 0)) {
+          if(ab.pressed(RIGHT_BUTTON) && (players == 0)) { // open 2
               players += 1;
-    }
-          if(ab.pressed(LEFT_BUTTON) && (players == 1)) {
+    } // close 2
+          if(ab.pressed(LEFT_BUTTON) && (players == 1)) { //open 3
             players -= 1;
-    }
-          if(ab.pressed(A_BUTTON)) {
+    } // close 3
+          if(ab.pressed(A_BUTTON)) { //open 4
             gamestate += 1;
-    }
-          if (players == 0) {
+    } // close 4
+          if (players == 0) { // open 5
             ab.setCursor((49), (49)); 
             ab.print("1");
-      }
-          else if (players == 1) {
+      } // close 5
+          else if (players == 1) { // open 6
             ab.setCursor((49), (49)); 
             ab.print("2");
-      }
-          else if (players >= 2) {
+      } // close 6
+          else if (players >= 2) { // open 7
           players = 0;
-      }
-      
+      } // close 7
+  } // close gamestate 1
    if (gamestate == 2) {
 
       //make enemy move and stuff
@@ -119,7 +119,7 @@ void loop() {
         emove = rand() % 8 + 1;
       
     }
-    } //  pull one of thease out?
+    // pulled one out 
  // test stuff get rid of eventualy
  ab.setCursor((70), (0)); 
   ab.print("X WINS");
@@ -333,7 +333,7 @@ if ((a1 >=1) && (a2 >=1) &&( a3 >=1) && (b1 >=1) && (b2 >=1) && (b3 >=1) && (c1 
   c2 = 0;
   c3 = 0;
 }
-    }
+    
     
   ab.display();
 }
