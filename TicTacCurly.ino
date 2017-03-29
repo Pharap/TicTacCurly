@@ -100,7 +100,7 @@ ab.setCursor((5), (10));
            }
       //make enemy move and stuff
  if ((players == 0) && (turn == 2)) {
-    delay(250);
+    //removed delay 
     emove = rand() % 8 + 1;
   }
     if ((emove == 1) && (a1 == 0)) {
