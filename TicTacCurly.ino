@@ -47,97 +47,101 @@ void loop() {
       if (ab.pressed(A_BUTTON)) {
         gamestate += 1;
       }
-    } // checked only void loop left open
-  if (gamestate == 1) { //open one
+    } 
+  if (gamestate == 1) { 
       ab.setCursor((49), (0)); 
       ab.print("players");
-
-          if(ab.pressed(RIGHT_BUTTON) && (players == 0)) { // open 2
+ab.setCursor((0), (10)); 
+      ab.print("LEFT or Right select");
+      ab.setCursor((20), (25)); 
+      ab.print("B to PLAY");
+          if(ab.pressed(RIGHT_BUTTON) && (players == 0)) { 
               players += 1;
-    } // close 2
-          if(ab.pressed(LEFT_BUTTON) && (players == 1)) { //open 3
+    } 
+          if(ab.pressed(LEFT_BUTTON) && (players == 1)) { 
             players -= 1;
-    } // close 3
-          if(ab.pressed(A_BUTTON)) { //open 4
-            gamestate += 1;
-    } // close 4
-          if (players == 0) { // open 5
+    } 
+          if(ab.pressed(B_BUTTON)) { 
+    } 
+          if (players == 0) { 
             ab.setCursor((49), (49)); 
             ab.print("1");
-      } // close 5
-          else if (players == 1) { // open 6
+      } 
+          else if (players == 1) { 
             ab.setCursor((49), (49)); 
             ab.print("2");
-      } // close 6
-          else if (players >= 2) { // open 7
+      } 
+          else if (players >= 2) { 
           players = 0;
-      } // close 7
-  } // close gamestate 1
+      } 
+  } 
    if (gamestate == 2) {
 
       //make enemy move and stuff
-      if ((players == 0) && (turn == 1)) {
-        emove = rand() % 8 + 1;
-      }
-        if ((emove == 1) && (a1 == 0)); {
-         a1 = 2;
-         turn += 1; 
-      }
-        else if ((emove == 2) && (a2 == 0)); {
-         a2 = 2; 
-         turn += 1;
-      }
-        else if ((emove == 3) && (a3 == 0)); {
-         a3 = 2;
-         turn += 1; 
-      }
-        else if ((emove == 4) && (b1 == 0)); {
-         b1 = 2;
-         turn += 1; 
-      }
-        else if ((emove == 5) && (b2 == 0)); {
-         b2 = 2; 
-         turn += 1;
-      }
-        else if ((emove == 6) && (b3 == 0)); {
-         b3 = 2; 
-         turn += 1;
-      }
-        else if ((emove == 7) && (c1 == 0)); {
-         c1 = 2; 
-         turn += 1;
-      }
-         else if ((emove == 8) && (c2 == 0)); {
-         c2 = 2; 
-         turn += 1;
-      }
-         else if ((emove == 9) && (c3 == 0)); {
-         b2 = 2; 
-         turn += 1;
-      }
-         else {
-        emove = rand() % 8 + 1;
-      
-    }
+ if ((players == 0) && (turn == 2)) {
+    emove = rand() % 8 + 1;
+  }
+    if ((emove == 1) && (a1 == 0)) {
+     a1 = 2;
+     turn += 1; 
+  }
+    else if ((emove == 2) && (a2 == 0)) {
+     a2 = 2; 
+     turn += 1;
+  }
+    else if ((emove == 3) && (a3 == 0)) {
+     a3 = 2;
+     turn += 1; 
+  }
+    else if ((emove == 4) && (b1 == 0)) {
+     b1 = 2;
+     turn += 1; 
+  }
+    else if ((emove == 5) && (b2 == 0)) {
+     b2 = 2; 
+     turn += 1;
+  }
+    else if ((emove == 6) && (b3 == 0)) {
+     b3 = 2; 
+     turn += 1;
+  }
+    else if ((emove == 7) && (c1 == 0)) {
+     c1 = 2; 
+     turn += 1;
+  }
+     else if ((emove == 8) && (c2 == 0)) {
+     c2 = 2; 
+     turn += 1;
+  }
+     else if ((emove == 9) && (c3 == 0)) {
+     b2 = 2; 
+     turn += 1;
+  }
+    
     // pulled one out 
  // test stuff get rid of eventualy
  ab.setCursor((70), (0)); 
   ab.print("X WINS");
   ab.setCursor((110), (0)); 
-  ab.print(xloc);
+  ab.print(xwins);
    ab.setCursor((70), (15)); 
   ab.print("O WINS");
   ab.setCursor((110), (15)); 
-  ab.print(yloc);
+  ab.print(owins);
   
   ab.setCursor((70), (30));
   ab.print("TIES");
   ab.setCursor((110), (30)); 
   ab.print(ties);
-  ab.setCursor((110), (45));
-  ab.setCursor((70), (45));
-  ab.print("emove"); 
-  ab.print(emove);
+  ab.setCursor((70), (40));
+  ab.print("Turn");
+  ab.setCursor((110), (40)); 
+  if (turn == 1) {
+  ab.print("X");
+  }
+  if (turn == 2) {
+    ab.print("O");
+  }
  // end test stuff
  ab.drawBitmap((xloc - 2), (yloc - 1), player, 10, 10, WHITE);
    if (turn >= 3) {
@@ -193,14 +197,7 @@ void loop() {
       yloc += 21;
     }
   
-  if (turn == 1) {
-  ab.setCursor((xloc), (yloc)); 
-  ab.print("X");
-  }
-  else if (turn == 2) {
-  ab.setCursor((xloc), (yloc)); 
-  ab.print("O");   
-  }
+  
 ab.drawFastVLine(21,0,63,WHITE);   //LEFT line
 ab.drawFastVLine(42,0,63,WHITE);  //RIGHT line
 ab.drawFastHLine(0,21,63,WHITE);   //TOP line
@@ -333,7 +330,8 @@ if ((a1 >=1) && (a2 >=1) &&( a3 >=1) && (b1 >=1) && (b2 >=1) && (b3 >=1) && (c1 
   c2 = 0;
   c3 = 0;
 }
+
     
-    
+   }  
   ab.display();
 }
