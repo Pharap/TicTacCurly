@@ -1,4 +1,3 @@
-
 #include "Arduboy2.h"
 Arduboy2 ab;
 int gamestate = 0;
@@ -83,40 +82,49 @@ ab.setCursor((0), (10));
     emove = rand() % 8 + 1;
   }
     if ((emove == 1) && (a1 == 0)) {
+     turn += 1;
      a1 = 2;
-     turn += 1; 
+      
   }
     else if ((emove == 2) && (a2 == 0)) {
-     a2 = 2; 
      turn += 1;
+     a2 = 2; 
+     
   }
     else if ((emove == 3) && (a3 == 0)) {
+     turn += 1;
      a3 = 2;
-     turn += 1; 
+      
   }
     else if ((emove == 4) && (b1 == 0)) {
+     turn += 1;
      b1 = 2;
-     turn += 1; 
+     
   }
     else if ((emove == 5) && (b2 == 0)) {
-     b2 = 2; 
      turn += 1;
+     b2 = 2; 
+     
   }
     else if ((emove == 6) && (b3 == 0)) {
-     b3 = 2; 
      turn += 1;
+     b3 = 2; 
+     
   }
     else if ((emove == 7) && (c1 == 0)) {
-     c1 = 2; 
      turn += 1;
+     c1 = 2; 
+     
   }
      else if ((emove == 8) && (c2 == 0)) {
-     c2 = 2; 
      turn += 1;
+     c2 = 2; 
+     
   }
      else if ((emove == 9) && (c3 == 0)) {
-     b2 = 2; 
      turn += 1;
+     b2 = 2; 
+     
   }
     
     // pulled one out 
