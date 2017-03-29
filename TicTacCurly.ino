@@ -62,7 +62,8 @@ ab.setCursor((0), (10));
             players -= 1;
     } 
           if(ab.pressed(B_BUTTON)) { 
-    } 
+           gamestate = 2;
+          } 
           if (players == 0) { 
             ab.setCursor((49), (49)); 
             ab.print("1");
