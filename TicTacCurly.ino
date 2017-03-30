@@ -48,7 +48,7 @@ void loop() {
   if (gamestate == 0) {
        ab.drawBitmap((0), (0), titles, 128, 54, WHITE);
        ab.setCursor((0), (55)); 
-      ab.print("VERSION 1.1 Bug Fixes");
+      ab.print("VERSION 1.1 PRESS A");
       if (ab.pressed(A_BUTTON)) {
         ab.clear();
         gamestate += 1;
