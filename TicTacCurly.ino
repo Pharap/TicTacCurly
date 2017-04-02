@@ -79,9 +79,7 @@ void drawCell(const Cell & cell);
 
 void drawGrid();
 
-bool isWinForX();
-
-bool isWinForO();
+bool isWinner(const Cell & cell);
 
 bool isTie();
 
@@ -190,20 +188,20 @@ void stepGameplay()
   else if(turn == Cell::X)
   {
     if(ab.pressed(A_BUTTON))
-  {
-    attemptMove(xloc, yloc, Cell::X);
-  }
+    {
+      attemptMove(xloc, yloc, Cell::X);
+    }
   }
  
   if (isTie()){      
     ++ties;
     clearGrid();
   }
-  else if (isWinForX()) {      
+  else if (isWinner(Cell::X)) {      
     ++xwins;
     clearGrid();
   }
-  else if (isWinForO()) {      
+  else if (isWinner(Cell::O)) {      
     ++owins;
     clearGrid();
   }
@@ -288,30 +286,17 @@ void drawGrid()
 
 // Tip: Don't use 'or' - use '||'.
 // 'or' is old fashioned and isn't really used anymore.
-bool isWinForX()
+bool isWinner(const Cell & cell)
 {
   return
-    (grid[0][0] == Cell::X) && (grid[1][0] == Cell::X) && (grid[2][0] == Cell::X) ||
-    (grid[0][1] == Cell::X) && (grid[1][1] == Cell::X) && (grid[2][1] == Cell::X) ||
-    (grid[0][2] == Cell::X) && (grid[1][2] == Cell::X) && (grid[2][2] == Cell::X) ||
-    (grid[0][0] == Cell::X) && (grid[0][1] == Cell::X) && (grid[0][2] == Cell::X) ||
-    (grid[1][0] == Cell::X) && (grid[1][1] == Cell::X) && (grid[1][2] == Cell::X) ||
-    (grid[2][0] == Cell::X) && (grid[2][1] == Cell::X) && (grid[2][2] == Cell::X) ||
-    (grid[0][0] == Cell::X) && (grid[1][1] == Cell::X) && (grid[2][2] == Cell::X) ||
-    (grid[2][0] == Cell::X) && (grid[1][1] == Cell::X) && (grid[0][2] == Cell::X);
-}
-
-bool isWinForO()
-{
-  return
-    (grid[0][0] == Cell::O) && (grid[1][0] == Cell::O) && (grid[2][0] == Cell::O) ||
-    (grid[0][1] == Cell::O) && (grid[1][1] == Cell::O) && (grid[2][1] == Cell::O) ||
-    (grid[0][2] == Cell::O) && (grid[1][2] == Cell::O) && (grid[2][2] == Cell::O) ||
-    (grid[0][0] == Cell::O) && (grid[0][1] == Cell::O) && (grid[0][2] == Cell::O) ||
-    (grid[1][0] == Cell::O) && (grid[1][1] == Cell::O) && (grid[1][2] == Cell::O) ||
-    (grid[2][0] == Cell::O) && (grid[2][1] == Cell::O) && (grid[2][2] == Cell::O) ||
-    (grid[0][0] == Cell::O) && (grid[1][1] == Cell::O) && (grid[2][2] == Cell::O) ||
-    (grid[2][0] == Cell::O) && (grid[1][1] == Cell::O) && (grid[0][2] == Cell::O);
+    (grid[0][0] == cell) && (grid[1][0] == cell) && (grid[2][0] == cell) ||
+    (grid[0][1] == cell) && (grid[1][1] == cell) && (grid[2][1] == cell) ||
+    (grid[0][2] == cell) && (grid[1][2] == cell) && (grid[2][2] == cell) ||
+    (grid[0][0] == cell) && (grid[0][1] == cell) && (grid[0][2] == cell) ||
+    (grid[1][0] == cell) && (grid[1][1] == cell) && (grid[1][2] == cell) ||
+    (grid[2][0] == cell) && (grid[2][1] == cell) && (grid[2][2] == cell) ||
+    (grid[0][0] == cell) && (grid[1][1] == cell) && (grid[2][2] == cell) ||
+    (grid[2][0] == cell) && (grid[1][1] == cell) && (grid[0][2] == cell);
 }
 
 bool isTie()
