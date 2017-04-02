@@ -87,7 +87,7 @@ void clearGrid();
 
 void setup() {
   ab.begin();
-  ab.setFrameRate(1);
+  ab.setFrameRate(60);
   ab.initRandomSeed();
   ab.clear();
 }
@@ -95,7 +95,8 @@ void setup() {
 void loop() {
   if (!(ab.nextFrame()))
     return;
-    ab.clear();
+  ab.pollButtons();
+  ab.clear();
 
   switch(gamestate)
   {
@@ -112,6 +113,7 @@ void loop() {
       gamestate = GameState::TitleScreen;
       break;
   }
+  
   ab.display();
 }
 
@@ -120,7 +122,7 @@ void stepTitleScreen()
   ab.drawBitmap((0), (0), titles, 128, 54, WHITE);
   ab.setCursor((0), (55)); 
   ab.print("VERSION 1.1 PRESS A");
-  if (ab.pressed(A_BUTTON)) {
+  if (ab.justPressed(A_BUTTON)) {
     ab.clear();
     gamestate = GameState::PlayerSelect;
   }
@@ -135,15 +137,15 @@ void stepPlayerSelect()
   ab.setCursor((35), (25)); 
   ab.print("B to PLAY"); 
   
-  if(ab.pressed(LEFT_BUTTON)) { 
+  if(ab.justPressed(LEFT_BUTTON)) { 
     players = 1;
   } 
 
-  if(ab.pressed(RIGHT_BUTTON)) { 
+  if(ab.justPressed(RIGHT_BUTTON)) { 
     players = 2;
   } 
   
-  if(ab.pressed(B_BUTTON)) { 
+  if(ab.justPressed(B_BUTTON)) { 
     gamestate = GameState::Gameplay;
   }
   
@@ -174,7 +176,7 @@ void attemptMove(const uint8_t & x, const uint8_t & y, const Cell & cell)
 void stepGameplay()
 {
   ab.clear();
-  if(ab.pressed(B_BUTTON)) { 
+  if(ab.justPressed(B_BUTTON)) { 
     turn = Cell::X;
     clearGrid();
   }
@@ -187,7 +189,7 @@ void stepGameplay()
   }  
   else if(turn == Cell::X)
   {
-    if(ab.pressed(A_BUTTON))
+    if(ab.justPressed(A_BUTTON))
     {
       attemptMove(xloc, yloc, Cell::X);
     }
@@ -206,16 +208,16 @@ void stepGameplay()
     clearGrid();
   }
 
-  if(ab.pressed(LEFT_BUTTON) && (xloc > 0)) {
+  if(ab.justPressed(LEFT_BUTTON) && (xloc > 0)) {
     --xloc;
   }
-  if(ab.pressed(RIGHT_BUTTON) && (xloc < 2)) {
+  if(ab.justPressed(RIGHT_BUTTON) && (xloc < 2)) {
     ++xloc;
   }
-  if(ab.pressed(UP_BUTTON) && (yloc > 0)) {
+  if(ab.justPressed(UP_BUTTON) && (yloc > 0)) {
     --yloc;
   }
-  if(ab.pressed(DOWN_BUTTON) && (yloc < 2)) {
+  if(ab.justPressed(DOWN_BUTTON) && (yloc < 2)) {
     ++yloc;
   }
   
